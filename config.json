@@ -1,0 +1,67 @@
+{
+  "search_engines": {
+    "google": {
+      "domain": "www.google.com",
+      "param": "q",
+      "engine": "google"
+    },
+    "bing": {
+      "domain": "www.bing.com",
+      "param": "q",
+      "engine": "bing"
+    },
+    "yandex": {
+      "domain": "yandex.com",
+      "param": "text",
+      "engine": "yandex"
+    },
+    "duckduckgo": {
+      "domain": "duckduckgo.com",
+      "param": "q",
+      "engine": "duckduckgo"
+    },
+    "baidu": {
+      "domain": "www.baidu.com",
+      "param": "wd",
+      "engine": "baidu"
+    },
+    "yahoo": {
+      "domain": "search.yahoo.com",
+      "param": "p",
+      "engine": "yahoo"
+    }
+  },
+  "search_terms": [
+    "Apple", "Bread", "Cheese", "Salmon", "Chocolate",
+    "Spinach", "Yogurt", "Pasta", "Almond", "Eggplant",
+    "Banana", "Blueberry", "Mango", "Broccoli", "Carrot",
+    "Zucchini", "Chicken", "Tofu", "Shrimp", "Quinoa",
+    "Rice", "Oatmeal", "Milk", "Cottage Cheese", "Soy Milk",
+    "Walnut", "Pumpkin Seed", "Honey", "Avocado", "Dark Chocolate",
+    "Coffee", "Tea", "Orange Juice", "Tomato", "Cucumber",
+    "Strawberry", "Raspberry", "Watermelon", "Peach", "Pear",
+    "Grape", "Kiwi", "Pineapple", "Lemon", "Lime",
+    "Garlic", "Onion", "Potato", "Sweet Potato", "Corn",
+    "Pizza", "Burger", "Sandwich", "Salad", "Soup"
+  ],
+  "monitoring": {
+    "concurrency": 5,
+    "timeout_seconds": 20,
+    "monitor_duration_minutes": 9999999999999,
+    "requests_per_engine_per_minute": 5
+  },
+  "thresholds": {
+    "success_rate": 95,
+    "timeout_rate": 10,
+    "timeout_limit": 10,
+    "min_content_size_kb": 2
+  },
+  "dingtalk": {
+    "webhook": "https://oapi.dingtalk.com/robot/send?access_token=e05a6891a68b9b3b1cfacf8dcf5852bf647457439261362fac0a1e096951bfa9",
+    "keyword": "test"
+  },
+  "auth": {
+    "authorization": "Bearer 5d7caa7f1e33019f9b1851e179415bc9",
+    "content_type": "application/x-www-form-urlencoded"
+  }
+}
