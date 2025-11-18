@@ -2,27 +2,33 @@
   "search_engines": {
     "google": {
       "domain": "www.google.com",
-      "param": "q"
+      "param": "q",
+      "engine": "google"
     },
     "bing": {
       "domain": "www.bing.com",
-      "param": "q"
+      "param": "q",
+      "engine": "bing"
     },
     "yandex": {
       "domain": "yandex.com",
-      "param": "text"
+      "param": "text",
+      "engine": "yandex"
     },
     "duckduckgo": {
       "domain": "duckduckgo.com",
-      "param": "q"
+      "param": "q",
+      "engine": "duckduckgo"
     },
     "baidu": {
       "domain": "www.baidu.com",
-      "param": "wd"
+      "param": "wd",
+      "engine": "baidu"
     },
     "yahoo": {
       "domain": "search.yahoo.com",
-      "param": "p"
+      "param": "p",
+      "engine": "yahoo"
     }
   },
   "search_terms": [
@@ -56,6 +62,6 @@
   },
   "auth": {
     "authorization": "Bearer 5d7caa7f1e33019f9b1851e179415bc9",
-    "content_type": "application/json"
+    "content_type": "application/x-www-form-urlencoded"
   }
 }

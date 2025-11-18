@@ -13,7 +13,7 @@ import logging
 import argparse
 import random
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 from datetime import datetime
 from collections import deque, defaultdict
 from logging import FileHandler
@@ -222,12 +222,27 @@ class SERPMonitor:
         self.api_url = "https://scraperapi.thordata.com/request"
     
     def build_payload(self, engine: str, term: str) -> dict:
-        """构建API请求payload"""
+        """构建API请求payload
+        返回包含url（用于日志）和params（用于API请求）的字典
+        """
         engine_config = self.config.search_engines[engine]
         domain = engine_config["domain"]
         param = engine_config["param"]
+        api_engine = engine_config.get("engine", engine)
+        
+        # 构建URL（用于日志记录）
+        url = f"https://{domain}/search?{param}={quote(term)}&json=1"
+        
+        # 构建API请求参数（URL编码格式）
+        params = {
+            "engine": api_engine,
+            param: term,
+            "json": "1"
+        }
+        
         return {
-            "url": f"https://{domain}/search?{param}={quote(term)}&json=1"
+            "url": url,
+            "params": params
         }
     
     async def fetch(self, session: aiohttp.ClientSession, engine: str, 
@@ -236,10 +251,13 @@ class SERPMonitor:
         start = time.time()
         
         try:
+            payload = self.build_payload(engine, term)
+            
+            # 使用URL编码格式发送请求
             async with session.post(
                 url=self.api_url,
                 headers=self.config.auth_header,
-                json=self.build_payload(engine, term),
+                data=urlencode(payload["params"]),
                 timeout=aiohttp.ClientTimeout(total=self.config.timeout_seconds)
             ) as r:
                 content = await r.text()
